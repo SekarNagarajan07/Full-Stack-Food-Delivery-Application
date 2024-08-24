@@ -1,11 +1,17 @@
 
 // Add food items 
 
-import fs from "fs";
+
+import fs from 'fs';
+
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads');
+}
+
 import foodModel from "../models/foodModul.js";
 const addFood = async (req, res) => {
 
-  let image_filename = `${req.file.filename}`
+  let image_filename = `${req.file.filename}`;
 
   const food = new foodModel({
     name: req.body.name,
